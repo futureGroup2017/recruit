@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>未来招新系统</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Enrolment.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+    <script>
+        function downloadfile() {
+            window.location.href = "/student/interviewStudentExcel?phase=报名人员";
+        }
+
+        function downloadfile1() {
+            window.location.href = "/student/interviewStudentExcel?phase=一面人员";
+        }
+
+        function downloadfile2() {
+            window.location.href = "/student/interviewStudentExcel?phase=二面人员";
+        }
+
+        function downloadfile3() {
+            window.location.href = "/student/interviewStudentExcel?phase=三面人员";
+        }
+    </script>
+</head>
+<body>
+<header>
+    <h1>
+        <img th:src="@{/images/top1.png}"/>
+        <span class="txtwav bounce">未来工作室</span>
+    </h1>
+    <ul class="rt_nav">
+        <li>
+            <a th:href="@{/toLoginOut}" class="quit_icon">
+                <i class="fa fa-send"></i>
+                <span>安全退出</span>
+            </a>
+        </li>
+    </ul>
+</header>
+<!--aside nav-->
+<aside class="aside_nav">
+    <!--<h2><a href="">招新步骤</a></h2>-->
+    <ul>
+        <div class="closeche">
+            <i class="fa fa-caret-right"></i>
+        </div>
+        <li>
+            <a th:href="@{/index}">欢迎登录</a>
+
+        </li>
+        <li class="active">
+            <a th:href="@{/student/findAllStudent}">报名人员</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a th:href="@{/interview/interview}">正在面试</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/personalResult}">我的面试人员</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/allInterviewResult}">成绩统计</a>
+        </li>
+        <li>
+            <a th:href="@{/scoreItem/findAll}">面试设置</a>
+        </li>
+        <li>
+            <a th:href="@{/question/findAll}">试题管理</a>
+        </li>
+    </ul>
+</aside>
+<section class="wrap ">
+    <div class="tables">
+        <h1>
+            -----------------报名人员-----------------
+        </h1>
+        <div style="overflow: hidden;">
+            <section style="display: inline-block">
+                <h2 class="button-title"><strong style="color:grey; font-size: 15px;">点击下载相应人员名单（报名，一面，二面，三面）</strong>
+                </h2>
+                <a style="margin-top:4px; width: 132px; height: 36px;" href="#" class="adiv a1"
+                   onclick="downloadfile();">报名人员</a>
+                <a style="margin-top:4px; width: 132px; height: 36px;" href="#" class="adiv a1"
+                   onclick="downloadfile1();">一面人员</a>
+                <a style="margin-top:4px; width: 132px; height: 36px;" href="#" class="adiv a1"
+                   onclick="downloadfile2();">二面人员</a>
+                <a style="margin-top:4px; width: 132px; height: 36px;" href="#" class="adiv a1"
+                   onclick="downloadfile3();">三面人员</a>
+            </section>
+            <div class="search bar7" style="display: inline-block;margin-left: 41%;">
+                <form th:action="@{/student/searchStudent}" method="post">
+                    <input type="text" placeholder="请输入姓名或班级或QQ号" name="keyword" class="ipt ipt1"/>
+                    <button type="submit" class="submit_btn"></button>
+                </form>
+            </div>
+        </div>
+        <div class="formborder">
+            <table class="table table-bordered">
+                <thead>
+                <tr style="background: #F5F5F5;">
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>班级</th>
+                    <th>手机</th>
+                    <th>QQ</th>
+                    <!--<th>面试时间</th>-->
+                    <th>面试状态</th>
+                    <th>是否面试</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${students.size()!=0}" th:each="i : ${#numbers.sequence(0,students.size()-1)}">
+                    <td th:text="${students.get(i).name}">xxx</td>
+                    <td th:text="${students.get(i).sex}">男</td>
+                    <td th:text="${students.get(i).studentClass}">通信173</td>
+                    <!--<td >通信</td>-->
+                    <td th:text="${students.get(i).phone}">159364518126</td>
+                    <td th:text="${students.get(i).qq}">29627843854</td>
+                    <!--<td th:text="${times.get(i)}"></td>-->
+                    <td style="color: red;"
+                        th:if="${students.get(i).status.equals('笔试失败') || students.get(i).status.equals('一面失败') || students.get(i).status.equals('二面失败') || students.get(i).status.equals('三面失败')}"
+                        th:text="${students.get(i).status}"></td>
+                    <td style="color: #19a97b;"
+                        th:if="${students.get(i).status.equals('笔试通过') || students.get(i).status.equals('一面通过') || students.get(i).status.equals('二面通过') || students.get(i).status.equals('三面通过')}"
+                        th:text="${students.get(i).status}"></td>
+                    <td th:if="${students.get(i).status.equals('已报名')}"
+                        th:text="${students.get(i).status}"></td>
+                    <td>
+                        <input th:value="${students.get(i).studentId}" class="studentId" style="display: none">
+                        <span class="adiv a3" th:if="${students.get(i).interviewStatus==0}">加入面试</span>
+                        <span class="adiv a4" th:if="${students.get(i).interviewStatus==1}">取消面试</span>
+                    </td>
+                    <td>
+                        <a class="adiv a1"
+                           th:href="@{/student/toUpdateStudent(studentId=${students.get(i).studentId})}">修改</a>
+                        <a class="adiv a2 deletes">删除</a>
+                        <input th:value="${students.get(i).studentId}" class="studentId" style="display: none">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="cure"></div>
+        <!--分页-->
+        <div class="fenye" th:if="${TotalPages > 0}">
+            <ul class="pagination" th:if="${TotalPages > 1}">
+                <li th:if="${Number == 1}"><a
+                        class="noclick" href="javascript:;">首页</a></li>
+                <li><a th:if="${Number > 1}" th:href="@{/student/findAllStudent(pageNum=1)}">首页</a></li><!--//跳转至第一页-->
+                <li><a th:if="${Number > 1}" th:href="@{/student/findAllStudent(pageNum=${Number-1})}">上一页</a></li>
+                <!--//请求页数-1-->
+                <li class="active" th:each="i:${#numbers.sequence(1,TotalPages)}">
+                    <!--//从1到总页数遍历，并赋值给i    TotalPages&ndash;&gt;总页数-->
+                    <a th:if="${i > Number-5} and ${i < Number+5} and ${i == Number}" class="pageOne"
+                       style="background-color: #18b985;border: 1px solid #ddd;" href="javascript:void(0);"
+                       th:text="${i}">#</a>
+                    <!--//限制显示页数的条数  4到6个页数   而且等于当前页，不能点击-->
+                    <a th:if="${i > Number-5} and ${i < Number+5} and ${i != Number}"
+                       th:href="@{/student/findAllStudent(pageNum=${i})}" th:text="${i}"
+                       style="color: #000000;background-color: #fff;border: 1px solid #ddd;cursor: pointer;"
+                       class="hoveras">#</a><!--//限制显示页数的条数  4到6个页数-->
+                </li>
+                <li th:if="${Number != TotalPages}"><a
+                        th:href="@{/student/findAllStudent(pageNum=${Number+1})}">下一页</a></li><!--//请求页数+1-->
+                <li th:if="${Number == TotalPages}"><a
+                        class="noclick" href="javascript:;">尾页</a></li>
+                <li th:if="${Number != TotalPages}"><a
+                        th:href="@{/student/findAllStudent(pageNum=${TotalPages})}">尾页</a></li><!--//跳转至第Number页-->
+            </ul>
+        </div>
+
+    </div>
+</section>
+</body>
+<script th:src="@{/js/jquery-2.1.0.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        //确定文档高度
+        var winheight = $(window).height();
+        winheight -= 70;
+        $('.wrap').css('height', winheight);
+        // console.log(winheight);
+        $(window).on('resize', function () {
+            var winheight = $(window).height();
+            winheight -= 70;
+            $('.wrap').css('height', winheight);
+            // console.log(winheight);
+        })
+        //点击缩回
+        $('.closeche').on('click', function () {
+            if ($('.aside_nav').css('left') == '0px') {
+                $('.aside_nav').css('left', '-210px');
+                $('.wrap').css({'width': '95%', 'margin-left': '40px'});
+            } else {
+                $('.aside_nav').css('left', '0px');
+                $('.wrap').css({'width': '', 'margin-left': '258px'})
+            }
+
+        })
+
+    });
+</script>
+<script th:src="@{/js/Enrolment.js}"></script>
+<script th:src="@{/js/public.js}"></script>
+<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+</html>

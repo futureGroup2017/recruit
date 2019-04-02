@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>未来招新系统</title>
+		<link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon" />
+		<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/perinfor.css}" />
+	</head>
+
+	<body>
+		<header>
+			<h1>
+                <img th:src="@{/images/top1.png}"/>
+                <span class="txtwav bounce">未来工作室</span>
+            </h1>
+			<ul class="rt_nav">
+				<li>
+					<a th:href="@{/toLoginOut}" class="quit_icon">
+						<i class="fa fa-send"></i>
+						<span>安全退出</span>
+					</a>
+				</li>
+			</ul>
+		</header>
+		<!--aside nav-->
+		<aside class="aside_nav">
+			<!--<h2><a href="">招新步骤</a></h2>-->
+
+			<ul>
+				<div class="closeche">
+					<i class="fa fa-caret-right"></i>
+				</div>
+				<li>
+					<a th:href="@{/index}">欢迎登录</a>
+				</li>
+				<li>
+					<a th:href="@{/student/findAllStudent}">报名人员</a>
+				</li>
+				<li>
+					<a th:href="@{/interview/interview}">正在面试</a>
+				</li>
+				<li>
+					<a th:href="@{/interview/personalResult}">我的面试人员</a>
+				</li>
+				<li class="active">
+					<a th:href="@{/interview/allInterviewResult}">成绩统计</a>
+					<i class="fa fa-angle-double-right"></i>
+				</li>
+				<li>
+					<a th:href="@{/scoreItem/findAll}">面试设置</a>
+				</li>
+				<li>
+					<a th:href="@{/question/findAll}">试题管理</a>
+				</li>
+			</ul>
+		</aside>
+		<section class="wrap ">
+			<div class="tables">
+				<section>
+					<a class="return" th:href="@{/interview/allInterviewResult}">
+						<i class="fa fa-chevron-left"></i>
+						<span>返回</span>
+					</a>
+				</section>
+				<section>
+					<h1 class="top-title">人 员 信 息</h1>
+				</section>
+				<div class="resultform">
+					<table class="table table-bordered table-hover">
+						<caption>人员信息</caption>
+						<thead>
+							<tr>
+								<th>姓名</th>
+								<th>性别</th>
+								<th>班级</th>
+								<th>QQ号</th>
+								<th>手机号</th>
+								<th>面试状态</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td th:text="${student.name}"></td>
+								<td th:text="${student.sex}"></td>
+								<td th:text="${student.studentClass}"></td>
+								<td th:text="${student.qq}"></td>
+								<td th:text="${student.phone}"></td>
+								<td th:text="${student.status}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<section>
+					<h1 class="top-title" style="margin-top: 30px">面 试 详 情</h1>
+				</section>
+				<div class="resultform" th:if="${mapOne.size()!=0}">
+					<table class="table table-bordered table-hover">
+						<caption>一面面试分数详情</caption>
+						<thead>
+							<tr style="font-size: 13px;">
+								<th>面试官</th>
+								<th th:each="scoreItem1 : ${scoreItemOne}" th:text="${scoreItem1}"></th>
+								<th>平均得分(百分制)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="i : ${#numbers.sequence(0,mapOne.size())}">
+								<td th:each="score : ${mapOne.get(i+'')}" th:text="${score}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="resultform" th:if="${mapTwo.size()!=0}">
+					<table class="table table-bordered table-hover">
+						<caption>二面面试分数详情</caption>
+						<thead>
+							<tr>
+								<th>面试官</th>
+								<th th:each="scoreItem : ${scoreItemTwo}" th:text="${scoreItem}"></th>
+								<th>平均得分(百分制)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="i : ${#numbers.sequence(0,mapTwo.size())}">
+								<td th:each="score : ${mapTwo.get(i+'')}" th:text="${score}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="resultform" th:if="${mapThree.size()!=0}">
+					<table class="table table-bordered table-hover">
+						<caption>三面面试分数详情</caption>
+						<thead>
+							<tr>
+								<th>面试官</th>
+								<th th:each="scoreItem : ${scoreItemThree}" th:text="${scoreItem}"></th>
+								<th>平均得分(百分制)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="i : ${#numbers.sequence(0,mapThree.size())}">
+								<td th:each="score : ${mapThree.get(i+'')}" th:text="${score}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<section class="messageresult">
+					<input class="studentId" style="display: none" th:value="${student.studentId}">
+					<a class="yesresult" th:if="${student.interviewPhase.equals('一面')}">一面通过</a>
+					<a class="outresult" th:if="${student.interviewPhase.equals('一面')}">一面淘汰</a>
+					<a class="yesresult" th:if="${student.interviewPhase.equals('二面')}">二面通过</a>
+					<a class="outresult" th:if="${student.interviewPhase.equals('二面')}">二面淘汰</a>
+					<a class="yesresult" th:if="${student.interviewPhase.equals('三面')}">三面通过</a>
+					<a class="outresult" th:if="${student.interviewPhase.equals('三面')}">三面淘汰</a>
+				</section>
+			</div>
+		</section>
+	</body>
+	<script th:src="@{/js/jquery-2.1.0.js}"></script>
+	<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+	<script th:src="@{/js/perinfor.js}"></script>
+	<script th:src="@{/js/public.js}"></script>
+	<script type="text/javascript">
+		$(function() {
+			//确定文档高度
+			var winheight = $(window).height();
+			winheight -= 70;
+			$('.wrap').css('height', winheight);
+			//点击缩回
+			$('.closeche').on('click', function() {
+				if($('.aside_nav').css('left') == '0px') {
+					$('.aside_nav').css('left', '-210px');
+					$('.wrap').css({
+						'width': '95%',
+						'margin-left': '40px'
+					});
+				} else {
+					$('.aside_nav').css('left', '0px');
+					$('.wrap').css({
+						'width': '',
+						'margin-left': '258px'
+					})
+				}
+			})
+		});
+	</script>
+
+</html>

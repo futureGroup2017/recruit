@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <title>未来工作室</title>
+    <link rel="shortcut icon" th:href="@{/images/logo.png}">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/scroll-page.css}">
+    <script th:src="@{/js/zepto.js}"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/zopto-touch.js}"></script>
+    <script th:src="@{/js/scrollPage.js}"></script>
+    <script th:src="@{/js/public.js}"></script>
+</head>
+<body>
+<div id="container">
+    <div class="page page1">
+        <img class="page1-logo" th:src="@{/images/1.png}" alt="">
+        <img class="page1-h1" th:src="@{/images/p1-h1.png}" alt="">
+        <img class="page1-new" th:src="@{/images/p1-new.png}" alt="">
+        <div class="page1-wei">
+            <img class="page1-wei-img1" th:src="@{/images/p1-wei.png}" alt="">
+            <img class="page1-hi" th:src="@{/images/p1-hi.png}" alt="">
+        </div>
+        <div class="page1-top">
+            <img class="page1-dear" th:src="@{/images/p1-dear.png}" alt="">
+            <img class="page1-dou" th:src="@{/images/p1-dou.png}" alt="">
+            <p class="page1-welcome">欢迎新同学,<br>欢迎学弟学妹</p>
+        </div>
+        <div class="page1-center">
+            <img class="page1-person" th:src="@{/images/p-person.png}">
+            <img class="page1-center-img  page1-feng" th:src="@{/images/p-feng.png}" alt="">
+            <img class="page1-center-img  page1-jian" th:src="@{/images/p-jian.png}" alt="">
+            <img class="page1-center-img  page1-dong2" th:src="@{/images/p1-dong2.png}" alt="">
+            <img class="page1-center-img  page1-dong" th:src="@{/images/p-dong.png}" alt="">
+        </div>
+        <div class="page1-say">
+            给你一个学习的平台 成就不一样的未来
+        </div>
+        <img class="page1-di" th:src="@{/images/p1-di.png}" alt="">
+    </div>
+    <div class="page page2">
+        <div class="page2-content">
+            <p class="page2-message-first">
+                <!--未来工作室以未来学习小组为前身，在高国红老师，李士勇老师的指导下，成立六年来形成了JavaWeb、前段开发、移动开发、艺术设计等方向，先后获得河南省大学生创业扶持资金项目一项，国家级大学生创业创新项目三项，并先后在省级创业比赛中多次获奖。开发了郑州市城管流程管理系统，辉县市机动车检测管理系统，平顶山市机动车检测管理系统，某军部卫星移动控制终端系统，河南科技学院干部网评系统，河南科技学院职称评定网评系统等软件项目，获得广泛好评。-->
+            </p>
+            <p class="page2-message-second">
+                <!--近年来，未来工作室毕业的学生就业率100%，全部在北京、杭州等中心城市从事IT开发工作，平均年薪达到12万元以上，部分同学在京东、新浪、锐捷等上市公司工作，做出了不俗的成绩。-->
+            </p>
+        </div>
+    </div>
+    <div class="page page3">
+        <div class="page3-top">
+            <img class="page3-img page3-rele-1" th:src="@{/images/rele.png}" alt="">
+            <img class="page3-img page3-rele-2" th:src="@{/images/rela-2.png}" alt="">
+            <img class="page3-img page3-rele-3" th:src="@{/images/rele-3.png}" alt="">
+            <div class="page3-flex page3-webQ">
+                <img th:src="@{/images/rele-4.png}" alt="" width="120%" height="120%">
+                <p>web前端</p>
+            </div>
+            <div class="page3-flex  page3-yi">
+                <img th:src="@{/images/rele-4.png}" alt="" width="100%" height="100%">
+                <p>移动端</p>
+            </div>
+        </div>
+        <div class="page3-bottom">
+            <img class="page3-img page3-rele-4" th:src="@{/images/rele.png}" alt="">
+            <img class="page3-img page3-rele-5" th:src="@{/images/rela-2.png}" alt="">
+            <img class="page3-img page3-rele-6" th:src="@{/images/rele-3.png}" alt="">
+            <div class="page3-flex  page3-java">
+                <img th:src="@{/images/rele-4.png}" alt="" width="120%" height="120%">
+                <p> Javaweb </p>
+            </div>
+            <div class="page3-flex  page3-ui">
+                <img th:src="@{/images/rele-4.png}" alt="" width="110%" height="110%">
+                <p>小程序</p>
+            </div>
+            <div class="page3-flex  page3-future">
+                <img th:src="@{/images/rele-4.png}" alt="" width="140%" height="140%">
+                <p>未来</p>
+            </div>
+        </div>
+    </div>
+    <div class="page page4">
+        <img class="page4-img" th:src="@{/images/x-3.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-2.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-4.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-5.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-1.jpg}" alt="">
+    </div>
+    <div class="page page5">
+        <div class="page5-box">
+            <div class="page5-face page5-1"></div>
+            <div class="page5-face page5-2"></div>
+            <div class="page5-face page5-3"></div>
+            <div class="page5-face page5-4"></div>
+            <div class="page5-face page5-5"></div>
+            <div class="page5-face page5-6"></div>
+        </div>
+    </div>
+    <div class="page page6">
+        <div class="page6-container">
+            <div class="clause clause1">
+                <img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
+                <p class="page6-content">2018新入学新生</p>
+                <div class="page6-line"></div>
+            </div>
+            <div class="clause clause2"><img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
+                <p class="page6-content">热爱团队、工作、生活</p>
+                <div class="page6-line"></div>
+            </div>
+            <div class="clause clause3"><img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
+                <p class="page6-content">能快速融入集体</p>
+                <div class="page6-line"></div>
+                <div class="page6-line"></div>
+            </div>
+            <div class="clause clause4"><img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
+                <p class="page6-content">
+                    对待学习刻苦努力
+                </p>
+                <div class="page6-line"></div>
+            </div>
+            <div class="clause clause5"><img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
+                <p class="page6-content">
+                    满足以上条件即可
+                </p>
+                <div class="page6-line"></div>
+            </div>
+        </div>
+    </div>
+    <div class="page page7">
+        <div class="page7-container">
+            <form action="">
+                <div th:class="cure"></div>
+                <input class="page7-input page7-input1 name" type="text"  placeholder="姓名:" >
+                <input class="page7-input page7-input2 studentClass" type="text" placeholder="班级:">
+                <input class="page7-input page7-input3 phone" type="text" placeholder="电话:">
+                <input class="page7-input page7-input4 qq" type="text" placeholder="QQ:">
+                <input class="page7-input page7-input6 submit" type="button" value="点击报名" style="height: 8.5%;">
+                <div class="nice-select page7-div page7-input7" name="nice-select">
+                    <input type="text" value=""  placeholder="性别:" th:class="sex" readonly>
+                    <ul>
+                        <li data-value="1">男</li>
+                        <li data-value="2">女</li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="page page8">
+        <div class="page8-container">
+            <div class="page8-title-container">
+                <h3 class="page8-title">
+                    长按扫描二维码加群</h3></div>
+            <div class="page8-img">
+                <a target="_blank">
+                    <img th:src="@{/images/qz-code.png}" alt="" width="220px">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="ball-canvas">
+        <canvas class="canvas"></canvas>
+    </div>
+    <div class="rolls">
+        <div class="roll top-roll"></div>
+        <div class="roll bottom-roll"></div>
+        <div class="roll left-roll"></div>
+        <div class="roll right-roll"></div>
+        <div class="rect fz"></div>
+        <div class="title">
+            <div class="title-left">
+                <img th:src="@{/images/p-dong.png}" alt="">
+            </div>
+            <div class="title-center">
+                <div class="title-center-img"></div>
+                <div class="title-center-left">
+                    <img th:src="@{/images/h3.png}" alt="">
+                </div>
+                <div class="title-center-center">
+                    <h1 class="title-center-center-h1">小组简介</h1>
+                </div>
+                <div class="title-center-right">
+                    <img th:src="@{/images/h2.png}" alt="">
+                </div>
+            </div>
+            <div class="title-right">
+                <img th:src="@{/images/p1-dong2.png}" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            <img class="footer-left" th:src="@{/images/p-person.png}" alt="">
+            <img class="footer-right" th:src="@{/images/young.png}" alt="">
+        </div>
+        <div class="arrow">
+            <img th:src="@{/images/arrow.png}" alt="arrow">
+        </div>
+    </div>
+    <div class="video play">
+        <audio class="audio" th:src="@{/images/30cb06217ecb4c8ba72117ce14512d7d.mp3}" autoplay loop></audio>
+    </div>
+</div>
+<script>
+    var ballCanvas = $('.ball-canvas'),
+        canvas = document.querySelector('.canvas'),
+        width = ballCanvas.width(),
+        height = ballCanvas.height(),
+        innerR = 0, outerR = 0, middleR = 0
+    timer = null
+    canvas.width = width
+    canvas.height = height
+    var ctx = canvas.getContext('2d')
+
+    function first(index) {
+        ballCanvas.css({'z-index': '99999', 'display': 'block', opacity: '1', transition: 'opacity 0.5s ease-out'})
+        drawCanvas(index)
+        $('.rect').removeClass("fz")
+    }
+
+    first(0)
+    scrollPage('#container', '.page', function (index) {
+        var arr = ['', '小组简介', '招新方向', '作品展示', '组内活动', '招新要求', '在线报名', '了解更多']
+        $('.title-center-center-h1').text(arr[index])
+        nonePage(index)
+        first(index)
+        initCommon()
+    })
+
+    function nonePage(index) {
+        var arr = [nonePage1, nonePage2,
+            nonePage3, nonePage4, nonePage5,
+            nonePage6, nonePage7, nonePage8]
+        var arrPageClass = ['.page1', '.page2', '.page3', '.page4', '.page5', '.page6', '.page7', '.page8']
+        for (var i = arr.length - 1, len = 0; i >= 0; i--) {
+            if (index !== i) {
+                arr[i]()
+                hiddenPage(arrPageClass[i])
+            } else {
+                showPage(arrPageClass[i])
+            }
+        }
+    }
+
+    function drawCanvas(index) {
+        innerR = 50
+        middleR = 100
+        outerR = 150
+        if (timer)
+            clearInterval(timer)
+        timer = setInterval(function () {
+            ctx.clearRect(0, 0, width, height)
+            if (innerR < 320) {
+                innerR += 4
+                outerR += 4
+                middleR += 4
+                draw(innerR, middleR, outerR)
+            }
+            else {
+                ballCanvas.css({'z-index': "0", top: ''})
+                clearInterval(timer)
+                $('.rect').addClass("fz")
+                animation(index)
+            }
+        }, 10)
+    }
+
+    //  canvas动画结束
+    function animation(index) {
+        ballCanvas.css({'display': 'none'})
+        if (index === 0) {
+            $('.title').hide()
+            $('.footer').hide()
+            page1()
+        } else {
+            $('.title').show()
+            $('.footer').show()
+            startAnimation(index)
+        }
+    }
+
+    function initCommon() {
+        $('.title-center-img').css({'top': '300%', opacity: '0'})
+        $('.title-center-center-h1').css({'left': '-200%', opacity: '0'})
+        $('.title-left').css({opacity: '0'})
+        $('.title-right').css({opacity: '0'})
+        $('.title-center-left').css({animation: "", opacity: '0'})
+        $('.title-center-right').css({animation: "", opacity: '0'})
+        $('.footer-left').css({transform: 'scale(0)', opacity: '0'})
+        $('.footer-right').css({opacity: '0'})
+    }
+
+    var setTimer = null
+
+    function startAnimation(index) {
+        if (setTimer) {
+            clearTimeout(setTimer)
+        }
+        setTimer = setTimeout(function () {
+            var arr = [page1, page2, page3, page4, page5, page6, page7, page8]
+            arr[index]()
+        }, 1000)
+        $('.title-center-img').css({
+            'top': '0', opacity: '1',
+            transition: "all 0.8s ease-out"
+        })
+        $('.footer-left').css({transform: 'scale(1)', opacity: '1', transition: "all 1s linear"})
+        setTimeout(function () {
+            $('.footer-right').css({opacity: '1', transition: "all 1s linear"})
+            $('.title-center-center-h1').css({
+                'left': 'calc(50% - 48px)',
+                opacity: '1',
+                transition: "all 0.6s ease-out"
+            })
+            setTimeout(function () {
+                $('.title-left').css({
+                    opacity: '1',
+                    transition: "all 1s ease-out"
+                })
+                $('.title-right').css({
+                    opacity: '1',
+                    transition: "all 1s ease-out"
+                })
+                $('.title-center-left').css({animation: "left-monkey 0.5s ease-out", opacity: '1'})
+                $('.title-center-right').css({animation: "right-monkey 0.5s ease-out", opacity: '1'})
+            }, 600)
+        }, 800)
+    }
+
+    function draw(innerR, middleR, outerR) {
+        ctx.beginPath()
+        ctx.fillStyle = '#ffd073'
+        ctx.arc(width / 2, height / 2, outerR, 0, Math.PI * 2, true)
+        ctx.fill()
+        ctx.closePath()
+        ctx.beginPath()
+        ctx.fillStyle = '#ffbf40'
+        ctx.arc(width / 2, height / 2, middleR, 0, Math.PI * 2, true)
+        ctx.fill()
+        ctx.closePath()
+        ctx.beginPath()
+        ctx.fillStyle = '#fa0'
+        ctx.arc(width / 2, height / 2, innerR, 0, Math.PI * 2, true)
+        ctx.closePath()
+        ctx.fill()
+    }
+
+    function showPage(page) {
+        $(page).css({display: 'block'})
+    }
+
+    function hiddenPage(page) {
+        $(page).css({display: 'none'})
+    }
+
+    function page1() {
+        $('.page1-new').css({
+            'opacity': 1,
+            'animation': ' doudong 0.8s ease-out 0s 1',
+        });
+        $('.page1-logo').css({
+            'left': '4%'
+        });
+        $('.page1-wei-img1').css({
+            "width": "100%",
+            "height": "100%"
+        })
+        $('.page1-person').css({
+            "width": "100%",
+            "height": "100%"
+        });
+        $('.page1-center-img').css({
+            "opacity": "1"
+        })
+        $('.page1-hi').css({'animation': 'page1-hi 1s ease-in infinite'})
+        setTimeout(function () {
+            $('.page1-h1').css({
+                'animation': ' doudong 0.8s ease-out 0s 1',
+            })
+            $('.page1-dou').css({
+                'opacity': '1',
+                'transform': 'rotate(0deg)'
+            })
+            $('.page1-dear').css({
+                'margin-left': '15%'
+            })
+            $('.page1-welcome').css({
+                'right': '10%'
+            })
+            $('.page1-say').css({
+                'margin-top': '2%'
+            })
+        }, 400);
+        setTimeout(function () {
+            $('.page1-new').css('top', '0%');
+            $('.page1-di').css({
+                'margin-top': '-1%'
+            })
+        }, 800)
+        setTimeout(function () {
+            $('.page1-h1').css({
+                'top': '1%',
+            })
+        }, 1200);
+
+    }
+
+    function nonePage1() {
+        $('.page1-new').css({
+            'top': '110%',
+            'opacity': 0,
+            'animation': 'none',
+        });
+        $('.page1-logo').css({
+            'left': '-30%'
+        });
+        $('.page1-wei-img1').css({
+            "width": "0%",
+            "height": "0%"
+        })
+        $('.page1-person').css({
+            "width": "0%",
+            "height": "0%"
+        });
+        $('.page1-center-img').css({
+            "opacity": "0"
+        })
+        $('.page1-h1').css({
+            'animation': 'none',
+            'top': '110%'
+        })
+        $('.page1-dou').css({
+            'opacity': '0',
+            'transform': 'rotate(-90deg)'
+        })
+        $('.page1-dear').css({
+            'margin-left': '-35%'
+        })
+        $('.page1-welcome').css({
+            'right': '-40%'
+        })
+        $('.page1-say').css({
+            'margin-top': '40%'
+        })
+        $('.page1-di').css({
+            'margin-top': '5%'
+        })
+        $('.page1-hi').css({'animation': ''})
+    }
+
+    var timer1 = null, timer2 = null;
+
+    function page2() {
+        $('.page2-content').css({opacity: '1'})
+        $('.page2-message-first').text('')
+        $('.page2-message-second').text('')
+        var strFirst = ' 未来工作室是由信息工程学院的高国红，李士勇两位老师指导创建，是以提高大学生专业知识技能，个人素养以及综合能力为目标的课外兴趣小组。创立7年来制定了web前端，Javaweb等学习方向。'
+        var strSec = ' 2015年成立了河南艾未特网络技术有限公司，开发了计算机应用基础自主学习与考试系统，卫星移动控制终端系统等优秀项目。未来工作室培养学生参与专业性技能竞赛，获得了ACM程序设计大赛省级银奖，蓝桥杯奖项若干。历届毕业生均在京东、联想、新浪等上市企业就职，平均年薪到达了16万元以上。'
+        var flag = 0, len = strFirst.length, len2 = strSec.length, second = false
+        timer1 = setInterval(function () {
+            flag += 1
+            if (flag <= len)
+                $('.page2-message-first').text(strFirst.substring(0, flag))
+            else {
+                clearInterval(timer1)
+                flag = 0
+                timer2 = setInterval(function () {
+                    flag += 1
+                    if (flag <= len2)
+                        $('.page2-message-second').text(strSec.substring(0, flag))
+                    else {
+                        clearInterval(timer2)
+                    }
+                }, 20)
+            }
+        }, 20)
+    }
+
+    function nonePage2() {
+        if (timer1)
+            clearInterval(timer1)
+        if (timer2)
+            clearInterval(timer2)
+        $('.page2-content').css({opacity: '0'})
+    }
+
+    function page3() {
+        top2('.page3-webQ', 10);
+        top2('.page3-yi', 5);
+        setTimeout(function () {
+            top2('.page3-rele-1', 50);
+            top2('.page3-rele-2', 0);
+            top2('.page3-rele-3', 80);
+        }, 200)
+        setTimeout(function () {
+            top2('.page3-rele-4', 30);
+            top2('.page3-rele-5', 77);
+            top2('.page3-rele-6', 10);
+            top2('.page3-java', 20);
+            top2('.page3-ui', 40);
+            top2('.page3-future', -40);
+        }, 400)
+
+        function top2(seletor, num) {
+            $(seletor).css({
+                'top': num + '%',
+                'opacity': '1'
+            })
+        }
+    }
+
+    function nonePage3() {
+        top1('.page3-rele-1');
+        top1('.page3-rele-2');
+        top1('.page3-rele-3');
+        top1('.page3-webQ');
+        top1('.page3-yi');
+        top1('.page3-rele-4');
+        top1('.page3-rele-5');
+        top1('.page3-rele-6');
+        top1('.page3-java');
+        top1('.page3-ui');
+        top1('.page3-future');
+
+        function top1(seletor) {
+            $(seletor).css({
+                'top': '200%',
+                'opacity': '0'
+            })
+        }
+    }
+
+    var timepage4 = new Array();
+
+    function page4(seletor, himglength, wimglength) {
+        seletor = seletor || '.page4-img'
+        himglength = himglength || '150px'
+        wimglength = wimglength || '150px'
+        var imgs = $(seletor);
+        for (var i = 0; i < imgs.length; i++) {
+            !function (i) {
+                timepage4[i] = setTimeout(function () {
+                    page4animan(i);
+                }, i * 1500);
+            }(i);
+        }
+
+        function page4animan(index) {
+            $(imgs[index]).css({
+                'transition': 'all 1s',
+                'width': '100%',
+                'height': '100%',
+                'opacity': '1',
+                'z-index': index,
+            }).addClass('spin')
+            setTimeout(function () {
+                $(imgs[index]).removeClass('spin')
+                    .addClass('page4-' + (index + 1))
+                    .css({
+                        'width': wimglength,
+                        'height': himglength
+                    });
+            }, 1000);
+        }
+    }
+
+    function nonePage4(seletor) {
+        seletor = seletor || '.page4-img'
+        var imgs = $(seletor);
+        for (var i = 0; i < imgs.length; i++) {
+            clearTimeout(timepage4[i]);
+            $(imgs[i]).css({
+                'transition': 'none',
+                'opacity': '0',
+                'width': '0%',
+                'height': '0%',
+            }).removeClass('page4-' + (i + 1))
+        }
+    }
+
+    var bb = null
+
+    function page5() {
+        $('.page5-box').css({
+            'margin-top': '10%',
+            'opacity': '1'
+        })
+        setTimeout(function () {
+            $('.page5-box').css({
+                'animation': '5s ease 0s normal none infinite running rotate',
+            })
+            var imgci = 3;
+            bb = setInterval(function () {
+                if (imgci == 7) {
+                    imgci = 1;
+                }
+                $('.page5-2').css({
+                    'background-image': 'url(../images/' + imgci + '.jpg)',
+                });
+                imgci++;
+            }, 6600)
+        }, 1000)
+    }
+
+    function nonePage5() {
+        clearInterval(bb);
+        $('.page5-box').css({
+            'margin-top': '110%',
+            'animation': 'none',
+            'opacity': '0'
+        })
+    }
+
+    function page6() {
+        var oImgs = $('.page6-img'),
+            oPs = $('.page6-content'),
+            oLines = $('.page6-line')
+        $('.page6').css({opacity: '1'})
+        for (var i = 0, len = oImgs.length; i < len; i++) {
+            $(oImgs.get(i)).css({'left': '8%', opacity: '1', transition: "all .8s ease-out " + (0.2 * i) + 's' + ""})
+        }
+        for (var i = 0, len = oPs.length; i < len; i++) {
+            $(oPs.get(i)).css({'left': '30%', opacity: '1', transition: "all .8s ease-out " + (0.2 * i) + 's' + ""})
+        }
+        for (var i = 0, len = oLines.length; i < len; i++) {
+            $(oLines.get(i)).css({
+                'width': '100%',
+                opacity: '1',
+                transition: "all .8s ease-out " + (0.2 * i) + 's' + ""
+            })
+        }
+    }
+
+    function nonePage6() {
+        var oImgs = $('.page6-img'),
+            oPs = $('.page6-content'),
+            oLines = $('.page6-line')
+        $('.page6').css({opacity: '0'})
+        for (var i = 0, len = oImgs.length; i < len; i++) {
+            $(oImgs.get(i)).css({transition: '', 'left': '-40%', opacity: '0'})
+        }
+        for (var i = 0, len = oPs.length; i < len; i++) {
+            $(oPs.get(i)).css({transition: '', 'left': '150%', opacity: '0'})
+        }
+        for (var i = 0, len = oLines.length; i < len; i++) {
+            $(oLines.get(i)).css({transition: '', 'width': '0%', opacity: '0'})
+        }
+    }
+
+    function page7() {
+        var oInputs = $('.page7-input')
+        var oin = $('.page7-div')
+        var oin2 = $('.page7-div2')
+        $('.page7').css({'z-index': '9999999'})
+        for (var i = 0, len = oInputs.length; i < len; i++) {
+            for (var i = 0, len = oInputs.length; i < len; i++) {
+                $(oInputs.get(i)).css({
+                    opacity: '1',
+                    transition: "all 1s ease-out " + (0.3 * i) + 's' + ""
+                })
+                if(i==0){
+                    $(oin).css({
+                        opacity: '1',
+                        transition: "all 1s ease-out " + (0.3 * i) + 's' + ""
+                    })
+                }
+                // if(i==4){
+                //     $(oin2).css({
+                //         opacity: '1',
+                //         transition: "all 1s ease-out " + (0.3 * i) + 's' + ""
+                //     })
+                // }
+            }
+        }
+    }
+
+    function nonePage7() {
+        var oInputs = $('.page7-input')
+        var oin = $('.page7-div')
+        var oin2 = $('.page7-div2')
+        for (var i = 0, len = oInputs.length; i < len; i++) {
+            for (var i = 0, len = oInputs.length; i < len; i++) {
+                $(oInputs.get(i)).css({
+                    opacity: '0',
+                    transition: "",
+                })
+                if(i==0){
+                    $(oin).css({
+                        opacity: '0',
+                        transition: "",
+                    })
+                }
+                // if(i==4){
+                //     $(oin2).css({
+                //         opacity: '0',
+                //         transition: "",
+                //     })
+                // }
+            }
+        }
+    }
+
+    function page8() {
+        $('.page8').css('z-index', '9999999')
+        $('.page8-title-container').css({top: "3%", opacity: '1', transition: 'all 0.6s ease-out'})
+        $('.page8-img').css({transform: "scale(1) rotate(360deg)", opacity: '1', transition: 'all 0.8s ease-out 0.3s'})
+    }
+
+    function nonePage8() {
+        $('.page8-title-container').css({transition: '', top: "100%", opacity: '0'})
+        $('.page8-img').css({transition: '', transform: "scale(0) rotate(0deg)", opacity: '0'})
+    }
+</script>
+<script>
+    //  音乐
+    $(function () {
+        $('.video').on('click', function () {
+            var audio = document.querySelector('#container .video .audio')
+            if (audio.paused) {
+                this.className = 'video play'
+                audio.play()
+            } else {
+                this.className = 'video pause'
+                audio.pause()
+            }
+        })
+    })
+</script>
+<script>
+
+    $('[name="nice-select"]').click(function(e){
+
+        $('[name="nice-select"]').find('ul').hide();
+
+        $(this).find('ul').show();
+
+        e.stopPropagation();
+
+    });
+
+    $('[name="nice-select"] li').hover(function(e){
+
+        $(this).toggleClass('on');
+
+        e.stopPropagation();
+
+    });
+
+    $('[name="nice-select"] li').click(function(e){
+
+        var val = $(this).text();
+        console.log(val);
+        $(this).parents('[name="nice-select"]').find('input').val(val);
+        console.log( $(this).parents('[name="nice-select"]').find('input').val());
+        $('[name="nice-select"] ul').hide();
+
+        e.stopPropagation();
+
+    });
+
+    $(document).click(function(){
+
+        $('[name="nice-select"] ul').hide();
+
+    });
+    var oInputs = $('.page7-input')
+    $('.page7-input6').on('click', function () {
+        var patternQQ = /[1-9]([0-9]{5,11})/,
+            patternTel = /^1(?:3\d|4[4-9]|5[0-35-9]|6[67]|7[013-8]|8\d|9\d)\d{8}$/,
+            name = oInputs[0],
+            clasName = oInputs[1],
+            tel = oInputs[2],
+            qq = oInputs[3],
+            dec = oInputs[4]
+        if (name.value.trim() == '') {
+            // alert("姓名输入有误，请重填");
+            $('.cure').addClass('uuu');
+            $('.cure').html("姓名输入有误，请重填");
+            setTimeout(function () {
+                $('.cure').removeClass('uuu');
+                $('.cure').html("");
+            },2000);
+            return false;
+        }
+        if (clasName.value.trim() == '') {
+            //alert("班级输入有误，请重填");
+            $('.cure').addClass('uuu');
+            $('.cure').html("班级输入有误，请重填");
+            setTimeout(function () {
+                $('.cure').removeClass('uuu');
+                $('.cure').html("");
+            },2000);
+            return false;
+        }
+        if (!patternTel.test(tel.value.trim())) {
+            //alert("手机号码输入有误，请重填");
+            $('.cure').addClass('uuu');
+            $('.cure').html("手机号码输入有误，请重填");
+            setTimeout(function () {
+                $('.cure').removeClass('uuu');
+                $('.cure').html("");
+            },2000);
+            return false;
+        }
+        if (!patternQQ.test(qq.value.trim())) {
+            //alert("QQ号码输入有误，请重填");
+            $('.cure').addClass('uuu');
+            $('.cure').html("QQ号码输入有误，请重填");
+            setTimeout(function () {
+                $('.cure').removeClass('uuu');
+                $('.cure').html("");
+            },2000);
+            return false;
+        }
+        // if (dec.value.trim() == '') {
+        //     //alert("学习方向输入有误，请重填");
+        //     $('.cure').addClass('uuu');
+        //     $('.cure').html("学习方向输入有误，请重填");
+        //     setTimeout(function () {
+        //         $('.cure').css('display','none');
+        //     },2000);
+        //     return false;
+        // }
+//            验证成功后 清除表单信息
+//         for (var i = 0, len = (oInputs.length - 1); i < len; i++) {
+//             oInputs[i].value = ''
+//         }
+//         return false;
+        var name = $('.name').val();
+        var sex = $('.sex').val();
+        var studentClass = $('.studentClass').val();
+        var phone = $('.phone').val();
+        var qq = $('.qq').val();
+        $.ajax({
+            type: "POST",
+            url: "/insert",
+            data: {
+                "name": name,
+                'sex':sex,
+                'studentClass':studentClass,
+                'phone':phone,
+                'qq':qq
+            },
+            async: false,
+            success: function (data) {
+                console.log(sex);
+                $('.cure').addClass('uuu');
+                $('.cure').html(data.msg);
+                if(data.msg == '抱歉，报名已关闭'){
+                    setTimeout(function () {
+                        $('.cure').removeClass('uuu');
+                        $('.cure').html("");
+                        setTimeout(function () {
+                            // location.reload(true);
+                            hiddenPage('.page7');
+                            nonePage7();
+                            showPage('.page8');
+                            page8();
+                        },2000);
+                    },2000);
+                } else {
+                    setTimeout(function () {
+                        $('.cure').removeClass('uuu');
+                        $('.cure').html("");
+                        setTimeout(function () {
+                            // location.reload(true);
+                            hiddenPage('.page7');
+                            nonePage7();
+                            showPage('.page8');
+                            page8();
+                        },1000);
+                    },1000);
+                }
+                //alert(data.msg)
+            },
+            error: function (data) {
+                $('.cure').addClass('uuu');
+                $('.cure').html(data.msg);
+                setTimeout(function () {
+                    $('.cure').css('display','none');
+                },2000);
+                // alert(data.msg)
+                // setTimeout(function () {
+                //     location.reload(true);
+                // },500);
+                alert(data.msg)
+            }
+        });
+
+    })
+    oInputs.on('focus', function () {
+        $(this).css({transition: '', 'box-shadow': '0px 0px 2px 2px #fa0'})
+    })
+    oInputs.on('blur', function () {
+        $(this).css({'box-shadow': ''})
+    })
+
+</script>
+</body>
+</html>

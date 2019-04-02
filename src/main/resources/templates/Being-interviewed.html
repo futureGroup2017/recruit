@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>未来招新系统</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Being-interviewed.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <script th:src="@{/js/jquery-2.1.0.js}"></script>
+</head>
+<body>
+<header>
+    <h1>
+        <img th:src="@{/images/top1.png}"/>
+        <span class="txtwav bounce">未来工作室</span>
+    </h1>
+    <ul class="rt_nav">
+        <li>
+            <a class="quit_icon" th:href="@{/toLoginOut}">
+                <i class="fa fa-send"></i>
+                <span>安全退出</span>
+            </a>
+        </li>
+    </ul>
+</header>
+<!--aside nav-->
+<aside class="aside_nav">
+    <!--<h2><a href="">招新步骤</a></h2>-->
+    <ul>
+        <div class="closeche">
+            <i class="fa fa-caret-right"></i>
+        </div>
+        <li>
+            <a th:href="@{/index}">欢迎登录</a>
+        </li>
+        <li>
+            <a th:href="@{/student/findAllStudent}">报名人员</a>
+        </li>
+        <li class="active">
+            <a th:href="@{/interview/interview}">正在面试</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a th:href="@{/interview/personalResult}">我的面试人员</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/allInterviewResult}">成绩统计</a>
+        </li>
+        <li>
+            <a th:href="@{/scoreItem/findAll}">面试设置</a>
+        </li>
+        <li>
+            <a th:href="@{/question/findAll}">试题管理</a>
+        </li>
+    </ul>
+</aside>
+<section class="wrap ">
+    <div th:if="${student.getStudentId()==0}">
+        <h1 th:text="'-----------------'+${msg}+'-----------------'"></h1>
+    </div>
+    <div class="ti" id="myBtn" th:if="${student.getStudentId()!=0}">
+        面试题库
+    </div>
+    <div class="tables" th:if="${student.getStudentId()!=0}">
+
+        <h1 th:text="'-----------------'+${msg}+'-----------------'">
+            -----------------正在面试-----------------
+        </h1>
+        <!--<form>-->
+            <div class="infos">
+                <div class="paper">
+                    <img th:if="${img.size()!=0}" th:src="'/Path'+${img.get(0)}"/>
+                    <img th:if="${img.size()!=0}" th:src="'/Path'+${img.get(1)}"/>
+                </div>
+                <div class="evaluate">
+                    <div class="Score-item">
+                        <div class="details" th:if="${student.getStudentId()!=0}">查看详情</div>
+                        <!--<h3 style="text-align: center;">打分表</h3>-->
+                        <table class="table table-bordered">
+                            <caption style="font-size: 15px;text-align: center;font-weight: 600;color: #4f4141;">打分表
+                            </caption>
+                            <p style="float: right;">学生:<span style="color: #444;font-size: 18px;"
+                                                              th:text="${student.getName()}" class="userName">xxx</span>
+                            </p>
+                            <thead>
+                            <tr th:each="scoreItem : ${scoreItems}">
+                                <th th:text="${scoreItem.getScoreName()}" class="txt"></th>
+                                <td><input type="number" min="0.0" max="10" step="0.1" class="score ipt"
+                                           required="required"/></td>
+                            </tr>
+                            <tr>
+                                <th class="txt">综合评价</th>
+                                <td><input type="text" class="score ipt2"/></td>
+                            </tr>
+                            </thead>
+                        </table>
+                        <input type="hidden" name="detail" class="postData">
+                    </div>
+                    <input type="hidden" name="studentId" th:value="${student.getStudentId()}" class="studentId">
+                    <button type="button" class="btn">提交</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- 打开弹窗按钮 -->
+            <!-- 弹窗 -->
+            <div id="myModal" class="modal">
+                <!-- 弹窗内容 -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>面试题库</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p th:each="i : ${#numbers.sequence(0,questionList.size()-1)}"
+                           th:text="'问题'+${i+1}+'：'+${questionList.get(i).getQuestionName()}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 弹窗 -->
+            <div id="myModal2" class="modal">
+                <!-- 弹窗内容 -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>学生详情</h2>
+                    </div>
+                    <div class="modal-body" style="height: 312px;">
+                        <table class="table table-bordered" style="margin-top: 20px;">
+                            <thead>
+                            <tr style="background: #F5F5F5;">
+                                <th>姓名</th>
+                                <td th:text="${student.name}"></td>
+                            </tr>
+                            <tr>
+                                <th>班级</th>
+                                <td th:text="${student.studentClass}"></td>
+                            </tr>
+                            <tr>
+                                <th>性别</th>
+                                <td th:text="${student.sex}"></td>
+                            </tr>
+                            <tr>
+                                <th>手机</th>
+                                <td th:text="${student.phone}"></td>
+                            </tr>
+                            <tr>
+                                <th>QQ</th>
+                                <td th:text="${student.qq}"></td>
+                            </tr>
+                            <tr>
+                                <th>面试状态</th>
+                                <td th:text="${student.status}"></td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <!--</form>-->
+    </div>
+    <div class="cure"></div>
+
+</section>
+</body>
+<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+<script th:src="@{/js/Being-interviewed.js}"></script>
+<script th:src="@{/js/public.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        //确定文档高度
+        var winheight = $(window).height();
+        winheight -= 70;
+        $('.wrap').css('height', winheight);
+        //点击缩回
+        $('.closeche').on('click', function () {
+            if ($('.aside_nav').css('left') == '0px') {
+                $('.aside_nav').css('left', '-210px');
+                $('.wrap').css({'width': '95%', 'margin-left': '40px'});
+            } else {
+                $('.aside_nav').css('left', '0px');
+                $('.wrap').css({'width': '', 'margin-left': '258px'})
+            }
+
+        })
+
+    });
+</script>
+</html>

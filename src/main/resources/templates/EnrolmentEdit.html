@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>未来招新系统</title>
+    <script th:src="@{/js/jquery-2.1.0.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/Enrolment.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/test/jeDate-test.css}">
+    <link type="text/css" rel="stylesheet" th:href="@{/skin/jedate.css}">
+     <script type="text/javascript" th:src="@{/src/jedate.js}"></script>
+    <script th:src="@{/bootstrap/dist/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<header>
+    <h1>
+        <img th:src="@{/images/top1.png}"/>
+        <span class="txtwav bounce">未来工作室</span>
+    </h1>
+    <ul class="rt_nav">
+        <li>
+            <a th:href="@{/toLoginOut}" class="quit_icon">
+                <i class="fa fa-send"></i>
+                <span>安全退出</span>
+            </a>
+        </li>
+    </ul>
+</header>
+<!--aside nav-->
+<aside class="aside_nav">
+    <!--<h2><a href="">招新步骤</a></h2>-->
+    <ul>
+        <div class="closeche">
+            <i class="fa fa-caret-right"></i>
+        </div>
+        <li>
+            <a href="index.html">欢迎登录</a>
+
+        </li>
+        <li class="active">
+            <a th:href="@{/student/findAllStudent}">报名人员</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a th:href="@{/interview/interview}">正在面试</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/personalResult}">我的面试人员</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/allInterviewResult}">全部成绩统计</a>
+        </li>
+        <li>
+            <a th:href="@{/scoreItem/findAll}">面试设置</a>
+        </li>
+        <li>
+            <a th:href="@{/question/findAll}">试题管理</a>
+        </li>
+    </ul>
+</aside>
+<!--弹窗-->
+<div class="windows">
+    <form th:action="@{/student/updateStudent(studentId=${student.studentId})}" enctype="multipart/form-data" method="post"  onsubmit="return check()">
+        <div class="con">
+        <!--<div class="formborder">-->
+        <h2 style="text-align: center;margin-bottom: 10px;margin-top: 5px;font-size: 24px;">修改报名人员</h2>
+            <!--<input style="display: none" th:value="${student.studentId}" name="studentId">-->
+        <table class="table table-bordered">
+            <thead>
+            <tr style="background: #F5F5F5;">
+                <th>姓名</th>
+                <td><input type="text" name="name" th:value="${student.name}"/></td>
+            </tr>
+            <tr>
+                <th>班级</th>
+                <td><input type="text" name="studentClass" th:value="${student.studentClass}"/></td>
+            </tr>
+            <tr>
+                <th>性别</th>
+                <td>
+                    <select name="sex"  th:field="${student.sex}">
+                        <option value='男'>男</option>
+                        <option value="女">女</option>
+                    </select>
+                </td>
+            </tr>
+            <th>手机</th>
+            <td><input type="text" name="phone" th:value="${student.phone}"/></td>
+            </tr>
+            <tr>
+                <th>QQ</th>
+                <td><input type="text" name="qq" th:value="${student.qq}"/></td>
+            </tr>
+            <!--<div th:if="${img.size()!=0}" th:each="i : ${img}">-->
+                <!--<img th:src="${i}">-->
+            <!--</div>-->
+            <tr>
+                <th>正面试卷</th>
+                <td>
+                    <!--上传图片-->
+                    <div class="all-photo" onclick="photoup()" style="display: inline-flex;">
+                    <div class="all-photo-right">
+                            <img th:if="${img.size()>1}" th:src="'/Path'+${img.get(0)}" id="imgshow" style="width: 90px;height: 45px;" />
+                            <img th:if="${img.size()<=1}" id="imgshow"  style="width: 90px;height: 45px;"/>
+                    </div>
+                    </div>
+                    <div class="adiv a1 look" id="myImg">查看</div>
+                    <input id="fileds" style="display: none;" name="file1" type="file" accept="image/*"/>
+                </td>
+            </tr>
+            <tr>
+                <th>反面试卷</th>
+                <td>
+                    <!--上传图片-->
+                    <div class="all-photo" onclick="photoup1()" style="display: inline-flex;">
+                        <div class="all-photo-right">
+                            <img th:if="${img.size()>1}" th:src="'/Path'+${img.get(1)}" id="imgshow1" style="width: 90px;height: 45px;" />
+                            <img th:if="${img.size()<=1}"  id="imgshow1" style="width: 90px;height: 45px;" />
+                        </div>
+                    </div>
+                    <div class="adiv a1 look" id="myImg1">查看</div>
+                    <input id="fileds1" style="display: none;" name="file2" type="file" accept="image/*"/>
+                </td>
+            </tr>
+            <!--<tr>
+                <th>面试时间</th>
+                <td>
+                    <label class="jelabel">年月日时分秒选择</label>
+                    <div class="jeinpbox">
+                        <input type="text" name="time" class="jeinput" id="test04" th:placeholder="${time}">
+                    </div>
+                </td>
+            </tr>-->
+            <tr>
+                <th>面试状态</th>
+                <td>
+                    <select name="status" th:field="${student.status}">
+                        <option value="已报名">已报名</option>
+                        <option value="笔试通过">笔试通过</option>
+                        <option value="笔试失败">笔试失败</option>
+                        <option value="一面通过">一面通过</option>
+                        <option value="一面失败">一面失败</option>
+                        <option value="二面通过">二面通过</option>
+                        <option value="二面失败">二面失败</option>
+                        <option value="三面通过">三面通过</option>
+                        <option value="三面失败">面试失败</option>
+                    </select>
+                </td>
+            </tr>
+            <th>操作</th>
+            <td>
+                <!--<a  th:href="@{/student/findAllStudent}" type="button" class="adiv a1 ok">确定</a>-->
+                <input type="submit" value="确定"  class="adiv a1 ok" id="change"/>
+                <a th:href="@{/student/findAllStudent}" class="adiv a2 cancel">取消</a>
+            </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+        <div class="cure">请上传两张图片</div>
+        <!-- 试卷弹窗 -->
+        <div id="myModal" class="modal" onclick="document.getElementById('myModal').style.display='none'">
+
+            <!-- 关闭按钮 -->
+            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+            <!-- 弹窗内容 -->
+            <img class="modal-content" id="img01">
+
+            <!-- 文本描述 -->
+            <div id="caption"></div>
+        </div>
+    </form>
+</div>
+
+</body>
+<script th:src="@{/js/jquery-2.1.0.js}"></script>
+<script type="text/javascript" th:src="@{/test/demo.js}"></script>
+<script type="text/javascript">
+    $(function() {
+        //确定文档高度
+        var winheight = $(window).height();
+        winheight -= 70;
+        $('.wrap').css('height', winheight);
+        // console.log(winheight);
+        $(window).on('resize',function(){
+            var winheight = $(window).height();
+            winheight -= 70;
+            $('.wrap').css('height', winheight);
+            // console.log(winheight);
+        })
+        //点击缩回
+        $('.closeche').on('click',function(){
+            if($('.aside_nav').css('left')=='0px'){
+                $('.aside_nav').css('left','-210px');
+                $('.wrap').css({'width':'95%','margin-left':'40px'});
+            }else{
+                $('.aside_nav').css('left','0px');
+                $('.wrap').css({'width':'','margin-left':'258px'})
+            }
+
+        })
+
+    });
+
+    function photoup() {
+        // console.log('14212');
+        $('#fileds').click();
+        $('#fileds').change(function() {
+            //获取input file的files文件数组;
+            //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
+            //这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+            var file = $('#fileds').get(0).files[0];
+            //创建用来读取此文件的对象
+            var reader = new FileReader();
+            //使用该对象读取file文件
+            reader.readAsDataURL(file);
+            //读取文件成功后执行的方法函数
+            reader.onload = function(e) {
+                //读取成功后返回的一个参数e，整个的一个进度事件
+                //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+                //的base64编码格式的地址
+                $('#imgshow').get(0).src = e.target.result;
+            }
+        })
+    }
+    function photoup1() {
+        // console.log('14212');
+        $('#fileds1').click();
+        $('#fileds1').change(function() {
+            //获取input file的files文件数组;
+            //$('#filed')获取的是jQuery对象，.get(0)转为原生对象;
+            //这边默认只能选一个，但是存放形式仍然是数组，所以取第一个元素使用[0];
+            var file = $('#fileds1').get(0).files[0];
+            //创建用来读取此文件的对象
+            var reader = new FileReader();
+            //使用该对象读取file文件
+            reader.readAsDataURL(file);
+            //读取文件成功后执行的方法函数
+            reader.onload = function(e) {
+                //读取成功后返回的一个参数e，整个的一个进度事件
+                //选择所要显示图片的img，要赋值给img的src就是e中target下result里面
+                //的base64编码格式的地址
+                $('#imgshow1').get(0).src = e.target.result;
+            }
+        })
+    }
+
+</script>
+<script th:src="@{/js/Enrolment.js}"></script>
+<!--<script th:src="@{/js/public.js}"></script>-->
+<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+</html>

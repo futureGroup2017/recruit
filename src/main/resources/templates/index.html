@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>未来招新系统</title>
+		<link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+		<link rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css">
+		<!--<link rel="stylesheet" href="assets/css/magnific-popup.css" type="text/css">-->
+		<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+		<link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+		<link rel="stylesheet" th:href="@{/css/matter.css}"/>
+		<script>
+			var colors = ['255,103,103', '97,223,255', '255,232,88', '141,255,139'];
+		</script>
+	</head>
+
+	<body>
+		<header>
+			<h1>
+        <img th:src="@{/images/top1.png}"/>
+        <span class="txtwav bounce">未来工作室</span>
+    </h1>
+			<ul class="rt_nav">
+				<li>
+					<a class="quit_icon" th:href="@{/toLoginOut}">
+						<i class="fa fa-send"></i>
+						<span>安全退出</span>
+					</a>
+				</li>
+			</ul>
+		</header>
+		<!--aside nav-->
+		<aside class="aside_nav">
+			<!--<h2><a href="">招新步骤</a></h2>-->
+			<ul>
+				<div class="closeche">
+					<i class="fa fa-caret-right"></i>
+				</div>
+				<li class="active onetop">
+					<a th:href="@{/index}">欢迎登录</a>
+					<i class="fa fa-angle-double-right"></i>
+				</li>
+				<li>
+					<a th:href="@{/student/findAllStudent}">报名人员</a>
+				</li>
+				<li>
+					<a th:href="@{/interview/interview}">正在面试</a>
+				</li>
+				<li>
+					<a th:href="@{/interview/personalResult}">我的面试人员</a>
+				</li>
+				<li>
+					<a th:href="@{/interview/allInterviewResult}">成绩统计</a>
+				</li>
+				<li>
+					<a th:href="@{/scoreItem/findAll}">面试设置</a>
+				</li>
+				<li>
+					<a th:href="@{/question/findAll}">试题管理</a>
+				</li>
+			</ul>
+		</aside>
+		<section class="wrap ">
+			<div class="tables" style="margin: 0px">
+				<div class="matter">
+					<a th:href="@{/student/findAllStudent}" class="matter-chunk">
+						<div class="chunk chunk-one">
+							<div class="chunk-img">
+								<i class="fa fa-users"></i>
+							</div>
+							<div class="chunk-text">
+								
+								<p>报名人员</p>
+							</div>
+						</div>
+					</a>
+					<a th:href="@{/interview/interview}" class="matter-chunk">
+						<div class="chunk chunk-two">
+							<div class="chunk-img">
+								<i class="fa fa-clock-o"></i>
+							</div>
+							<div class="chunk-text">
+								<p>正在面试</p>
+							</div>
+						</div>
+					</a>
+					<a th:href="@{/interview/allInterviewResult}" class="matter-chunk">
+						<div class="chunk chunk-three">
+							<div class="chunk-img">
+								<i class="fa fa-navicon"></i>
+							</div>
+							<div class="chunk-text">
+								<p>成绩统计</p>
+							</div>
+						</div>
+					</a>
+					<a th:href="@{/scoreItem/findAll}" class="matter-chunk">
+						<div class="chunk chunk-four">
+						<div class="chunk-img">
+								<i class="fa fa-cogs"></i>
+							</div>
+							<div class="chunk-text">
+								<p>面试设置</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+		<div class="bgcanvas">
+			<div class="content-wrapper">
+					<div class="content-main animate">
+						<div class="container">
+							<h1 class="font-size-90">Welcome</h1>
+							<h2 class="opacity-60">未来工作室招新系统</h2>
+						</div>
+					</div>
+					<div class="background-wrapper">
+						<canvas id="background-content"></canvas>
+					</div>
+				</div>
+		</div>
+	</body>
+	<script th:src="@{/js/jquery-2.1.0.js}"></script>
+	<script type="text/javascript" th:src="@{/js/index.js}" ></script>
+	<script type="text/javascript">
+		$(function() {
+			//确定文档高度
+			var winheight = $(window).height();
+			winheight -= 70;
+			$('.wrap').css('height', winheight);
+            //点击缩回
+            $('.closeche').on('click',function(){
+            	if($('.aside_nav').css('left')=='0px'){
+            		$('.aside_nav').css('left','-210px');
+            		$('.wrap').css({'width':'95%','margin-left':'40px'});
+            	}else{
+            		$('.aside_nav').css('left','0px');
+            		$('.wrap').css({'width':'','margin-left':'258px'})
+            	}
+            	
+            })
+            
+		});
+	</script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+	<script th:src="@{/assets/js/TweenLite.min.js}"></script>
+	<script th:src="@{/assets/js/EasePack.min.js}"></script>
+	<script th:src="@{/assets/js/exploding-triangles.js}"></script>
+	<script th:src="@{/assets/js/custom.js}"></script>
+	<script th:src="@{/js/public.js}"></script>
+
+	<script>
+		var latitude = 34.038405;
+		var longitude = -117.946944;
+		var markerImage = "assets/img/map-marker.png";
+		var mapTheme = "light";
+		var mapElement = "map";
+
+		$(".modal").on("shown.bs.modal", function(e) {
+			google.maps.event.addDomListener(window, 'load', simpleMap(latitude, longitude, markerImage, mapTheme, mapElement));
+		});
+	</script>
+
+</html>

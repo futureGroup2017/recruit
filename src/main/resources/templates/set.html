@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>未来招新系统</title>
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/dist/css/txt.wav.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/set.css}"/>
+</head>
+<body>
+<header>
+    <h1>
+        <img th:src="@{/images/top1.png}"/>
+        <span class="txtwav bounce">未来工作室</span>
+    </h1>
+    <ul class="rt_nav">
+        <li>
+            <a th:href="@{/toLoginOut}" class="quit_icon">
+                <i class="fa fa-send"></i>
+                <span>安全退出</span>
+            </a>
+        </li>
+    </ul>
+</header>
+<!--aside nav-->
+<aside class="aside_nav">
+    <!--<h2><a href="">招新步骤</a></h2>-->
+    <ul>
+        <div class="closeche">
+            <i class="fa fa-caret-right"></i>
+        </div>
+        <li>
+            <a th:href="@{/index}">欢迎登录</a>
+
+        </li>
+        <li>
+            <a th:href="@{/student/findAllStudent}">报名人员</a>
+
+        </li>
+        <li>
+            <a th:href="@{/interview/interview}">正在面试</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/personalResult}">我的面试人员</a>
+        </li>
+        <li>
+            <a th:href="@{/interview/allInterviewResult}">成绩统计</a>
+        </li>
+        <li class="active">
+            <a th:href="@{/scoreItem/findAll}">面试设置</a>
+            <i class="fa fa-angle-double-right"></i>
+        </li>
+        <li>
+            <a th:href="@{/question/findAll}">试题管理</a>
+        </li>
+    </ul>
+</aside>
+<section class="wrap ">
+    <div class="tables">
+        <section>
+            <h1 class="top-title">面 试 设 置</h1>
+        </section>
+        <div class="setform">
+            <span style="margin-right: 30px">是否开启报名</span>
+            <span class="swith" th:if="${SignUp}">
+                 <i class="off">关闭</i>
+                 <i class="open on">开启</i>
+            </span>
+            <span class="swith" th:if="!${SignUp}">
+                 <i class="off on">关闭</i>
+                 <i class="open">开启</i>
+            </span>
+        </div>
+        <div class="setform">
+            <table class="table table-bordered table-hover">
+                <caption>
+                    <span>面试打分项</span>
+                    <span class="plus" id="myBtn"><i class="fa fa-plus"></i></span>
+                </caption>
+                <thead>
+                <tr>
+                    <th>打分项</th>
+                    <th colspan="2">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="scoreItem : ${scoreItems}">
+                    <td th:text="${scoreItem.getScoreName()}" class="zhi"></td>
+                    <td>
+                        <input class="modi" type="button" value="修改">
+                    </td>
+                    <td>
+                        <input class="delete" type="button" value="删除">
+                        <input type="hidden" class="scoreItemId" th:value="${scoreItem.scoreItemId}">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- 弹窗内容 -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="closes">&times;</span>
+                    <h4>添加面试打分项</h4>
+                </div>
+                <div class="modal-body">
+                    <input placeholder="请输入需要的面试打分项" class="write" required/>
+                    <!--<div th:each="scoreItem : ${scoreItems}">-->
+                    <!--<input type="hidden"  th:value="${scoreItem.scoreItemId}" class="scoreItemId">-->
+                    <!--</div>-->
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="Sure" value="确认">
+                </div>
+            </div>
+
+        </div>
+        <div class="cure"></div>
+        <!--分页-->
+        <div class="fenye" th:if="${TotalPages > 0}">
+            <ul class="pagination" th:if="${TotalPages > 1}">
+                <li th:if="${Number == 1}"><a
+                        class="noclick" href="javascript:;">首页</a></li>
+                <li><a th:if="${Number > 1}" th:href="@{/scoreItem/findAll(pageNum=1)}">首页</a></li><!--//跳转至第一页-->
+                <li><a th:if="${Number > 1}" th:href="@{/scoreItem/findAll(pageNum=${Number-1})}">上一页</a></li>
+                <!--//请求页数-1-->
+                <li class="active" th:each="i:${#numbers.sequence(1,TotalPages)}">
+                    <!--//从1到总页数遍历，并赋值给i    TotalPages&ndash;&gt;总页数-->
+                    <a th:if="${i > Number-3} and ${i < Number+3} and ${i == Number}" class="pageOne"
+                       style="background-color: #18b985;border: 1px solid #ddd;" href="javascript:void(0);"
+                       th:text="${i}">#</a>
+                    <!--//限制显示页数的条数  4到6个页数   而且等于当前页，不能点击-->
+                    <a th:if="${i > Number-3} and ${i < Number+3} and ${i != Number}"
+                       th:href="@{/scoreItem/findAll(pageNum=${i})}" th:text="${i}"
+                       style="color: #000000;background-color: #fff;border: 1px solid #ddd;cursor: pointer;"
+                       class="hoveras">#</a><!--//限制显示页数的条数  4到6个页数-->
+                </li>
+                <li th:if="${Number != TotalPages}"><a
+                        th:href="@{/scoreItem/findAll(pageNum=${Number+1})}">下一页</a></li><!--//请求页数+1-->
+                <li th:if="${Number == TotalPages}"><a
+                        class="noclick" href="javascript:;">尾页</a></li>
+                <li th:if="${Number != TotalPages}"><a
+                        th:href="@{/scoreItem/findAll(pageNum=${TotalPages})}">尾页</a>
+                </li><!--//跳转至第Number页-->
+            </ul>
+        </div>
+    </div>
+</section>
+</body>
+<script th:src="@{/js/jquery-2.1.0.js}"></script>
+<script th:src="@{/dist/js/txt.wav.min.js}"></script>
+<script th:src="@{/js/set.js}"></script>
+<script th:src="@{/js/public.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        //确定文档高度
+        var winheight = $(window).height();
+        winheight -= 70;
+        $('.wrap').css('height', winheight);
+        //点击缩回
+        $('.closeche').on('click', function () {
+            if ($('.aside_nav').css('left') == '0px') {
+                $('.aside_nav').css('left', '-210px');
+                $('.wrap').css({'width': '95%', 'margin-left': '40px'});
+            } else {
+                $('.aside_nav').css('left', '0px');
+                $('.wrap').css({'width': '', 'margin-left': '258px'})
+            }
+
+        })
+
+    });
+</script>
+</html>
