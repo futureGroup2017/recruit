@@ -122,13 +122,18 @@ public class StudentServiceImpl implements StudentService {
         UploadUtil uploadUtil = new UploadUtil();
         if (!myFileName1.isEmpty()) {
             System.out.println("上传正面图片");
-            //重新上传删除图片
+            //重新上传 删除旧图片
             if (studentOne.getWrittenTestImg()!=null && !studentOne.getWrittenTestImg().equals("")) {
-                uploadUtil.deleteFile(writtenTestImg.substring(0,writtenTestImg.indexOf(",")));
+                if(studentOne.getWrittenTestImg().length() > 100) {
+                    uploadUtil.deleteFile(writtenTestImg.substring(0,writtenTestImg.indexOf(",")));
+                } else if(studentOne.getWrittenTestImg().lastIndexOf(",") != 0){
+                    uploadUtil.deleteFile(writtenTestImg.substring(0,writtenTestImg.length()-1));
+                }
             }
             //上传图片
             String fileName = myFileName1.getOriginalFilename();
-            String fileNameExtension = fileName.substring(fileName.indexOf("."), fileName.length());
+            assert fileName != null;
+            String fileNameExtension = fileName.substring(fileName.indexOf("."));
             // 生成实际存储的真实文件名
             String realName = UUID.randomUUID().toString() + fileNameExtension;
             String path = str + "/" + realName;
@@ -137,17 +142,23 @@ public class StudentServiceImpl implements StudentService {
                 writtenTestImg.replace(0,writtenTestImg.indexOf(","),path);
             } else {
                 writtenTestImg.append(path);
+                if(myFileName2.isEmpty()) writtenTestImg.append(",");
             }
         }
         if (!myFileName2.isEmpty()) {
             System.out.println("上传背面图片");
-            //重新上传删除图片
+            //重新上传 删除旧图片
             if (studentOne.getWrittenTestImg()!=null && !studentOne.getWrittenTestImg().equals("")) {
-                uploadUtil.deleteFile(writtenTestImg.substring(writtenTestImg.indexOf(",")+1,writtenTestImg.length()));
+                if(studentOne.getWrittenTestImg().length() > 100) {
+                    uploadUtil.deleteFile(writtenTestImg.substring(writtenTestImg.indexOf(",")+1,writtenTestImg.length()));
+                } else if(studentOne.getWrittenTestImg().lastIndexOf(",") == 0){
+                    uploadUtil.deleteFile(writtenTestImg.substring(1));
+                }
             }
             //上传图片
             String fileName = myFileName2.getOriginalFilename();
-            String fileNameExtension = fileName.substring(fileName.indexOf("."), fileName.length());
+            assert fileName != null;
+            String fileNameExtension = fileName.substring(fileName.indexOf("."));
             // 生成实际存储的真实文件名
             String realName = UUID.randomUUID().toString() + fileNameExtension;
             String path = str + "/" + realName;
