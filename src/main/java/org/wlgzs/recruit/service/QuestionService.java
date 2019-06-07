@@ -34,4 +34,6 @@ public interface QuestionService {
     Result update(int questionId, String questionName);
 
     List<Question> findAllQuestion();
+
+    Question findOne();
 }

@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.wlgzs.recruit.base.BaseController;
 import org.wlgzs.recruit.domain.Question;
 import org.wlgzs.recruit.util.result.Result;
+import org.wlgzs.recruit.util.result.ResultCodeEnum;
 
 /**
  * @author 阿杰
@@ -16,6 +17,14 @@ import org.wlgzs.recruit.util.result.Result;
 @RestController
 @RequestMapping("/question")
 public class QuestionController extends BaseController {
+    /**
+     * 随机获取一个面试问题
+     */
+    @GetMapping("/findOne")
+    public Result findOne() {
+        Question question = questionService.findOne();
+        return new Result(ResultCodeEnum.FIND,question.getQuestionName());
+    }
     /**
      * Description 分页查询所有问题
      * Param [pageNum, pageSize]

@@ -33,6 +33,21 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+
+$(".ti").click(function () {
+    $.ajax({
+        type: "Get",
+        url: "/question/findOne",
+        data: {},
+        async: false,
+        success: function (data) {
+            $('.question').text("问题："+data.data);
+        },
+        error: function (data) {
+            alert(data)
+        }
+    });
+});
 // $("#btn").click(function () {
 //     var txt = $(".txt");
 //     var bb="";

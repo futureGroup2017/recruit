@@ -198,10 +198,12 @@ th,td{
 h2{
     font-size: 22px;
     font-family: '黑体';
+    text-align: center;
+    margin-top: 10px;
 }
 .modal-body {
 	padding: 2px 16px;
-	height: 360px;
+	height: 75px;
 	overflow: scroll;
 	}
 

@@ -74,4 +74,9 @@ public class QuestionServiceImpl implements QuestionService {
         Wrapper<Question> questionEntityWrapper = new EntityWrapper<>();
         return questionDao.selectList(questionEntityWrapper);
     }
+
+    @Override
+    public Question findOne() {
+        return questionDao.findOne();
+    }
 }
