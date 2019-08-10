@@ -96,8 +96,8 @@ public class InterviewController extends BaseController {
     public ModelAndView interviewById(Model model, int studentId) {
         List<ScoreItem> scoreItems = scoreItemService.findAllScoreItem();
         model.addAttribute("scoreItems", scoreItems);
-//        List<Question> questionList = questionService.findAllQuestion();
-//        model.addAttribute("questionList", questionList);
+        List<Question> questionList = questionService.findAllQuestion();
+        model.addAttribute("questionList", questionList);
         Student student = studentService.findStudentById(studentId);
         if (student.getStudentId() != 0) {
             if ("笔试通过".equals(student.getStatus())) {

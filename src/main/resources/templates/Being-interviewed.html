@@ -114,13 +114,13 @@
                         <span class="close">&times;</span>
                         <h2>面试题</h2>
                     </div>
-                    <div class="modal-body">
-                        <p style="font-size: 18px;" text="问题：" class="question"></p>
-                    </div>
                     <!--<div class="modal-body">
+                        <p style="font-size: 18px;" text="问题：" class="question"></p>
+                    </div>-->
+                    <div class="modal-body">
                         <p th:each="i : ${#numbers.sequence(0,questionList.size()-1)}"
                            th:text="'问题'+${i+1}+'：'+${questionList.get(i).getQuestionName()}"></p>
-                    </div>-->
+                    </div>
                 </div>
             </div>
 
