@@ -6,7 +6,9 @@
     <groupId>org.wlgzs</groupId>
     <artifactId>recruit</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+<!--    <packaging>jar</packaging>-->
+    <!--打war包时需要-->
+    <packaging>war</packaging>
 
     <name>recruit</name>
     <description>未来招新项目</description>
@@ -40,6 +42,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--打war包时需要-->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
         <!-- mysql 数据驱动 -->
         <dependency>
             <groupId>mysql</groupId>

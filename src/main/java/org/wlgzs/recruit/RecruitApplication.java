@@ -5,17 +5,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 @MapperScan("org.wlgzs.recruit.dao.*")
+//注释部分打war包时需要
 //@ServletComponentScan
+//public class RecruitApplication extends SpringBootServletInitializer {
 public class RecruitApplication {
-    private static final Logger logger = LoggerFactory.getLogger(RecruitApplication.class);
+
+    /*@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(RecruitApplication.class);
+    }*/
 
     public static void main(String[] args) {
-        logger.info("SpringBoot开始加载");
         SpringApplication.run(RecruitApplication.class, args);
-        logger.info("SpringBoot加载完毕");
     }
 }

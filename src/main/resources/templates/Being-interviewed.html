@@ -72,9 +72,9 @@
         <!--<form>-->
             <div class="infos">
                 <div class="paper">
-                    <img th:if="${img.size()==1}" th:src="'/Path'+${img.get(0)}"/>
-                    <img th:if="${img.size()>1 && img.get(0)!=''}" th:src="'/Path'+${img.get(0)}"/>
-                    <img th:if="${img.size()>1 && img.get(1)!=''}" th:src="'/Path'+${img.get(1)}"/>
+                    <img th:if="${img.size()==1}" th:src="'/File/recruit'+${img.get(0)}"/>
+                    <img th:if="${img.size()>1 && img.get(0)!=''}" th:src="'/File/recruit'+${img.get(0)}"/>
+                    <img th:if="${img.size()>1 && img.get(1)!=''}" th:src="'/File/recruit'+${img.get(1)}"/>
                 </div>
                 <div class="evaluate">
                     <div class="Score-item">

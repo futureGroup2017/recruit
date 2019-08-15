@@ -105,9 +105,9 @@
                     <!--上传图片-->
                     <div class="all-photo" onclick="photoup()" style="display: inline-flex;">
                     <div class="all-photo-right">
-                        <img th:if="${img.size()>1 && img.get(0)!=''}" th:src="'/Path'+${img.get(0)}" id="imgshow" style="width: 90px;height: 45px;" />
+                        <img th:if="${img.size()>1 && img.get(0)!=''}" th:src="'/File/recruit'+${img.get(0)}" id="imgshow" style="width: 90px;height: 45px;" />
                         <img th:if="${img.size()>1 && img.get(0)==''}" id="imgshow" style="width: 90px;height: 45px;" />
-                        <img th:if="${img.size()==1}" th:src="'/Path'+${img.get(0)}" id="imgshow" style="width: 90px;height: 45px;" />
+                        <img th:if="${img.size()==1}" th:src="'/File/recruit'+${img.get(0)}" id="imgshow" style="width: 90px;height: 45px;" />
                         <img th:if="${img.size()<1}" id="imgshow"  style="width: 90px;height: 45px;"/>
                     </div>
                     </div>
@@ -121,7 +121,7 @@
                     <!--上传图片-->
                     <div class="all-photo" onclick="photoup1()" style="display: inline-flex;">
                         <div class="all-photo-right">
-                            <img th:if="${img.size()>1}" th:src="'/Path'+${img.get(1)}" id="imgshow1" style="width: 90px;height: 45px;" />
+                            <img th:if="${img.size()>1}" th:src="'/File/recruit'+${img.get(1)}" id="imgshow1" style="width: 90px;height: 45px;" />
                             <img th:if="${img.size()<=1}"  id="imgshow1" style="width: 90px;height: 45px;" />
                         </div>
                     </div>

@@ -23,7 +23,7 @@ spring:
 #      url: jdbc:mysql://39.105.208.222:3306/recruit?useUnicode=true&characterEncoding=utf-8
       url: jdbc:mysql://127.0.0.1:3306/recruit?useUnicode=true&characterEncoding=utf-8
       username: root
-      password: lovewlgzs
+      password: root
       #配置初始化大小/最小/最大
       initial-size: 1
       min-idle: 1
