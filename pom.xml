@@ -6,9 +6,9 @@
     <groupId>org.wlgzs</groupId>
     <artifactId>recruit</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-<!--    <packaging>jar</packaging>-->
+    <packaging>jar</packaging>
     <!--打war包时需要-->
-    <packaging>war</packaging>
+<!--    <packaging>war</packaging>-->
 
     <name>recruit</name>
     <description>未来招新项目</description>
