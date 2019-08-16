@@ -12,6 +12,8 @@ logging:
   file: log\recruit.log
 
 spring:
+  jmx:
+    enabled: false
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
