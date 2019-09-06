@@ -42,7 +42,7 @@ public class StudentServiceImpl implements StudentService {
             return result;
         }
         if (student.getName()==null || student.getName().length() < 2 || student.getStudentClass()==null ||
-                student.getPhone()== null || student.getPhone().length() != 11 || student.getQq()==null || student.getQq().length() > 11) {
+                student.getQq()==null || student.getQq().length() > 11) {
             result.setMsg("报名失败，信息有误");
             return result;
         }
