@@ -10,7 +10,7 @@
     <meta name="full-screen" content="yes">
     <!-- QQ强制全屏 -->
     <meta name="x5-fullscreen" content="true">
-    <title>未来工作室</title>
+    <title>未来软件工作室</title>
     <link rel="shortcut icon" th:href="@{/images/logo.png}">
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/scroll-page.css}">
@@ -90,11 +90,12 @@
         </div>
     </div>
     <div class="page page4">
-        <img class="page4-img" th:src="@{/images/x-3.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-1.jpg}" alt="">
         <img class="page4-img" th:src="@{/images/x-2.jpg}" alt="">
         <img class="page4-img" th:src="@{/images/x-4.jpg}" alt="">
         <img class="page4-img" th:src="@{/images/x-5.jpg}" alt="">
-        <img class="page4-img" th:src="@{/images/x-1.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-3.jpg}" alt="">
+        <img class="page4-img" th:src="@{/images/x-6.jpg}" alt="">
     </div>
     <div class="page page5">
         <div class="page5-box">
@@ -110,7 +111,7 @@
         <div class="page6-container">
             <div class="clause clause1">
                 <img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
-                <p class="page6-content">2018新入学新生</p>
+                <p class="page6-content">2019年入学新生</p>
                 <div class="page6-line"></div>
             </div>
             <div class="clause clause2"><img th:src="@{/images/p-jian.png}" alt="" class="page6-img">
@@ -142,7 +143,7 @@
                 <div th:class="cure"></div>
                 <input class="page7-input page7-input1 name" type="text"  placeholder="姓名:" >
                 <input class="page7-input page7-input2 studentClass" type="text" placeholder="班级:">
-                <input class="page7-input page7-input3 phone" type="text" placeholder="电话:">
+                <input class="page7-input page7-input3 phone" type="text" placeholder="电话(选填):">
                 <input class="page7-input page7-input4 qq" type="text" placeholder="QQ:">
                 <input class="page7-input page7-input6 submit" type="button" value="点击报名" style="height: 8.5%;">
                 <div class="nice-select page7-div page7-input7" name="nice-select">
@@ -461,8 +462,8 @@
         $('.page2-content').css({opacity: '1'})
         $('.page2-message-first').text('')
         $('.page2-message-second').text('')
-        var strFirst = ' 未来工作室是由信息工程学院的高国红，李士勇两位老师指导创建，是以提高大学生专业知识技能，个人素养以及综合能力为目标的课外兴趣小组。创立7年来制定了web前端，Javaweb等学习方向。'
-        var strSec = ' 2015年成立了河南艾未特网络技术有限公司，开发了计算机应用基础自主学习与考试系统，卫星移动控制终端系统等优秀项目。未来工作室培养学生参与专业性技能竞赛，获得了ACM程序设计大赛省级银奖，蓝桥杯奖项若干。历届毕业生均在京东、联想、新浪等上市企业就职，平均年薪到达了16万元以上。'
+        var strFirst = ' 未来软件工作室由高国红，李士勇两位老师于2011年6月创办，以提高学生软件开发技术为核心培养目标，旨在全方位提高学生的就业质量和创新创业能力。工作室成立以来，逐步形成了Web设计开发、大前端设计开发两大学习方向以及Java Web、数据处理、移动开发、UI设计等若干细分方向，凝练了成熟的学习路线和培养方案。'
+        var strSec = ' 一路走来我们成绩斐然，先后获得国家级创新创业项目5项，河南省创业扶持资金项目2项，校级创新创业项目8项，在各类学科竞赛中获国家级奖项12项，省级奖项91项，设计开发各类软件产品40余个，培养毕业生40余人，均就职于京东、联想、新浪等知名企业，平均就业年薪达20万元以上。'
         var flag = 0, len = strFirst.length, len2 = strSec.length, second = false
         timer1 = setInterval(function () {
             flag += 1
@@ -799,16 +800,16 @@
             },2000);
             return false;
         }
-        if (!patternTel.test(tel.value.trim())) {
-            //alert("手机号码输入有误，请重填");
-            $('.cure').addClass('uuu');
-            $('.cure').html("手机号码输入有误，请重填");
-            setTimeout(function () {
-                $('.cure').removeClass('uuu');
-                $('.cure').html("");
-            },2000);
-            return false;
-        }
+        // if (!patternTel.test(tel.value.trim())) {
+        //     //alert("手机号码输入有误，请重填");
+        //     $('.cure').addClass('uuu');
+        //     $('.cure').html("手机号码输入有误，请重填");
+        //     setTimeout(function () {
+        //         $('.cure').removeClass('uuu');
+        //         $('.cure').html("");
+        //     },2000);
+        //     return false;
+        // }
         if (!patternQQ.test(qq.value.trim())) {
             //alert("QQ号码输入有误，请重填");
             $('.cure').addClass('uuu');
@@ -836,7 +837,7 @@
         var name = $('.name').val();
         var sex = $('.sex').val();
         var studentClass = $('.studentClass').val();
-        var phone = $('.phone').val();
+         var phone = $('.phone').val();
         var qq = $('.qq').val();
         $.ajax({
             type: "POST",
@@ -845,7 +846,7 @@
                 "name": name,
                 'sex':sex,
                 'studentClass':studentClass,
-                'phone':phone,
+                 'phone':phone,
                 'qq':qq
             },
             async: false,

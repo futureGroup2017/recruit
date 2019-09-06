@@ -166,6 +166,7 @@ body {
       position: absolute; }
       #container .page2 .page2-content p {
         padding: 0 10px;
+        margin: 0;
         text-indent: 2em;
         text-space: 1px;
         word-break: break-all;
