@@ -24,6 +24,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <mybatis-plus-boot-starter.version>1.0.5</mybatis-plus-boot-starter.version>
+        <mybatis-plus.version>2.1.8</mybatis-plus.version>
+        <mysql.version>5.1.47</mysql.version>
+        <druid.version>1.1.9</druid.version>
+        <poi.version>3.9</poi.version>
     </properties>
 
     <dependencies>
@@ -52,13 +57,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <version>${mysql.version}</version>
         </dependency>
         <!-- alibaba的druid数据库连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.9</version>
+            <version>${druid.version}</version>
         </dependency>
         <!-- 测试 -->
         <dependency>
@@ -70,34 +75,20 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>3.9</version>
+            <version>${poi.version}</version>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.wlgzs</groupId>
-            <artifactId>sso</artifactId>
-            <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/sso-1.0.0.jar</systemPath>
-        </dependency>-->
-        <!-- wlgzs-sso -->
-        <!--<dependency>
-            <groupId>org.wlgzs</groupId>
-            <artifactId>sso</artifactId>
-            <version>1.0.0</version>
-        </dependency>-->
 
         <!-- mybatis plus与spring boot整合 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatisplus-spring-boot-starter</artifactId>
-            <version>1.0.5</version>
+            <version>${mybatis-plus-boot-starter.version}</version>
         </dependency>
         <!-- mybatis plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
-            <version>2.1.8</version>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
         <!-- 使用lombok简化代码 -->
