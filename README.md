@@ -16,7 +16,7 @@
 
 #### 模块介绍
 
-<img src="document/Mind-mapping.png"  width="100%" >
+<img src="document/Mind-mapping.png"  width="80%" >
 
 #### 技术选型
 
